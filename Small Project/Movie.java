@@ -26,7 +26,7 @@
 			int choice=0;
 			do {
 				Scanner sc=new Scanner(System.in);
-			System.out.println("Select the choice...\npress 1 for adding review \nfor searching the movie \nAny other key to exit...");
+			System.out.println("Select the choice...\n press 1 for adding review \n press 2 for searching the movie \n press 0 to exit...");
 			choice=sc.nextInt();
 			switch(choice) 
 			{
