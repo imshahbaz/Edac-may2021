@@ -88,7 +88,9 @@ INSERT INTO Supplier (Sno,Sname,Status,City) VALUES
     ('J1','PRJ1','LONDON'),
     ('J2','PRJ2','CHINA'),
     ('J3','PRJ3','CHINA'), 
-    ('J4','PRJ4','INDIA'); 
+    ('J4','PRJ4','INDIA'),
+    ('J5','PRJ5','ATHENS')
+    ; 
     
     
     INSERT INTO SPJ (Sno,Pno,Jno,Qty) VALUES
@@ -106,5 +108,16 @@ select Pname,Color from Parts where City = 'LONDON';
 
 select * from Supplier where City = 'LONDON';
 
-
 select * from Supplier where City = 'PARIS' or City ='ATHENS';
+
+select Jname from Projects where City = 'ATHENS';
+
+select Pname from Parts where Weight between 12 and 14;
+
+select Sname from Supplier where Status>=20;
+
+select * from Supplier where City != 'LONDON';
+
+select City from Supplier;
+
+select Weight*100 "Milligrams",Weight/1000 "Kilogram" from Parts;
