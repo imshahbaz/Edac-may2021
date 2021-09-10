@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Membership</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles2.css" rel="stylesheet" />
+        <link href="css/Error.css" rel="stylesheet" />
+    </head>
+ 
+    <body class="d-flex flex-column">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+              <div class="container px-5">
+                  <a class="navbar-brand" th:href="@{/}"><b>Elite Sports Club</b></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                          <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                          
+                            <li class="nav-item"><a class="nav-link" th:href="@{/gallery}">Gallery</a></li>
+                         <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/tournaments}">Tournaments</a></li>
+                             
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Facilities</a>
+                              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                  <li><a class="dropdown-item" th:href="@{/swimming}">Aqua Point</a></li>
+                                  <li><a class="dropdown-item" th:href="@{/badminton}">Badminton</a></li>
+                                  <li><a class="dropdown-item" th:href="@{/bodyzone}">Body Zone</a></li>
+                                  <li><a class="dropdown-item" th:href="@{/cricket}">Cricket</a></li>
+                                  <li><a class="dropdown-item" th:href="@{/music}">Music</a></li>
+                              </ul>
+                          </li>
+                          
+                          
+                             <li class="nav-item"><a class="nav-link" th:href="@{/addAdmin}" sec:authorize="hasAuthority('admin')">Add Admin</a></li>
+                            
+                          
+                          <li class="nav-item"><span class="nav-link" sec:authorize="isAuthenticated()">Welcome! [[${#request.userPrincipal.principal.fname}]]</span></li>
+                            
+                          
+                          
+                           <li class="nav-item"><a class="nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a></li>
+                          <li class="nav-item"><a class="nav-link" th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a></li>
+                          <li class="nav-item"><a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+          
+         
+          
+          
+          
+          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="img/Membership2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h2 style="color: black;">Start your Membership Now!!!</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- Header-->
+            
+            
+             
+          <div th:if="${param.already}" style="text-align: center; width: 20%; margin-left: 40%; ">
+  <div class="error-notice">
+   <div class="oaerror warning">
+          <strong>Already A Member</strong>
+        </div></div></div>
+               
+            
+            
+            
+            
+            <header class="py-5">
+                <div class="container px-6">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-xxl-6">
+                    
+                           
+                            <div class="text-center my-5">
+                                <h1 class="fw-bolder mb-3">About Membership</h1>
+                                <p class="lead fw-normal text-muted mb-4">Applications regarding all kinds of memberships or transfers must be submitted fees with an Advance  towards relative fees prevailing at that time.
+
+                                    All members are requested to pay club dues in time to avoid cessation of memberships and avoid other inconveniences. Please inform about changes in address, telephone numbers, email etc. for updation of club records and timely communication.</p>
+                                 <h5 class="fw-bolder mb-3">Contact Club Reception-9131733084</h5>
+                                <a class="btn btn-primary btn-lg" href="#scroll-target">Fees Related Information</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- About section one-->
+            <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="img/Membership1.jpg" alt="sports picture" /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">Quarterly Membership</h2>
+                            <p class="lead fw-normal text-muted mb-0"><table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Member</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Entrance Fees</th>
+                                    <th scope="col">Fees</th>
+                                    <th scope="col">Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Junior</td>
+                                    <td>Between 10-18 years</td>
+                                    <td>1500</td>
+                                    <td>3000</td>
+                                    <td>4500</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Senior</td>
+                                    <td>Between Above 18 years</td>
+                                    <td>1500</td>
+                                    <td>3600</td>
+                                    <td>5100</td>
+                                  </tr>
+                                
+                                </tbody>
+                              </table>Rs.5100+18% GST applicable</p>
+                              <a class="btn btn-primary" th:href="@{/activatemembership}">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section two-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="img/Membership2.jpg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">Halfyearly Membership</h2>
+                            <p class="lead fw-normal text-muted mb-0"><table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Member</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Entrance Fees</th>
+                                    <th scope="col">Fees</th>
+                                    <th scope="col">Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Junior</td>
+                                    <td>Between 10-18 years</td>
+                                    <td>1500</td>
+                                    <td>6000</td>
+                                    <td>7500</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Senior</td>
+                                    <td>Above 18 years</td>
+                                    <td>1500</td>
+                                    <td>7200</td>
+                                    <td>8700</td>
+                                  </tr>
+                                
+                                </tbody>
+                              </table>8700+18% GST applicable</p>
+                              <a class="btn btn-primary" th:href="@{/activatemembership}">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+               <!-- About section Three-->
+               <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="img/Membership3.jpg" alt="sports picture" /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">Annual Membership</h2>
+                            <p class="lead fw-normal text-muted mb-0"><table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Member</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Entrance Fees</th>
+                                    <th scope="col">Fees</th>
+                                    <th scope="col">Total</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Junior</td>
+                                    <td>Between 10-18 years</td>
+                                    <td>1500</td>
+                                    <td>12000</td>
+                                    <td>13500</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Senior</td>
+                                    <td>above 18 years</td>
+                                    <td>1500</td>
+                                    <td>14400</td>
+                                    <td>15900</td>
+                                  </tr>
+                                
+                                </tbody>
+                              </table>15900+18% GST applicable</p>
+                              <a class="btn btn-primary" th:href="@{/activatemembership}">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+              
+          
+        <!-- Footer-->
+              
+      
+      <footer class="main-footer">
+          <div class="container">
+              <div class="footer-content">
+                  <div class="row">
+                      <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                          <div class="logo-widget footer-widget">
+                              <figure class="logo-box"><a th:href="@{/}"><img src="img/logo1.jpg" alt=""></a></figure>
+                              <div class="text">
+                                  <p> Today, Sports Club is one of the most regal clubs of Ahmedabad and renowned for its state of the art amenities and splendid aura.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+                          <div class="service-widget footer-widget">
+                              <div class="footer-title">Services</div>
+                              <ul class="list">
+                                  <li><a href="#">Grounds</a></li>
+                                  <li><a href="#">Lawns</a></li>
+                                  <li><a href="#">Indoor sport halls</a></li>
+                                  <li><a href="#">Food and beverages</a></li>
+                                  <li><a href="#">Accomodations</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+                          <div class="service-widget footer-widget">
+                              <div class="footer-title">Designed By</div>
+                              <ul class="list">
+                                  <li><a href="https://www.linkedin.com/in/imshahbaz21/">Shahbaz Ahmed</a></li>
+                                  <li><a href="https://www.linkedin.com/in/udit-vyas-6a840b1a1/">Udit Vyas</a></li>
+                                  <li><a href="https://www.linkedin.com/in/jayesh-gaikwad-95967819a/">Jayesh Gaikwad</a></li>
+                                  <li><a href="#">Janvahi Banarse</a></li>
+                                  <li><a href="#">Devanshu Sulakhe</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </footer>
+      <!-- main-footer end -->
+      <div class="footer-bottom">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12 column">
+                      <div class="copyright"> &copy; 2019 All Right Reserved</div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 column">
+                      <ul class="footer-nav">
+                          <li><a href="#">Terms of Service</a></li>
+                          <li><a href="#">Privacy Policy</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        </main>
+    </body>
+
+  </html>

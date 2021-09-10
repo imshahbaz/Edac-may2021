@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<link rel="stylesheet" type="text/css" href="css/login1.css">
+</head>
+<body>
+
+
+
+
+
+
+<div class="header1">
+  <a th:href="@{/}" class="logo">Elite Sports Club</a>
+  <div class="header-right1">
+    <a th:href="@{/}">Home</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <a th:href="@{/login}">Login</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Responsive Desktop/Mobile Login form considered to be used as mobile first approach-->
+	<!-- Wave animation credit: https://codepen.io/goodkatz -->
+
+	<div class="header">
+
+		<!--Content before waves-->
+		<div class="inner-header flex">
+			<!--Just the logo.. Don't mind this-->
+
+			<h3>Register</h3>
+		</div>
+
+		<!--Waves Container-->
+		<div>
+			<svg class="waves" xmlns="http://www.w3.org/2000/svg"
+				xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+				preserveAspectRatio="none" shape-rendering="auto">
+<defs>
+<path id="gentle-wave"
+					d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+</defs>
+<g class="parallax">
+<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+</g>
+</svg>
+		</div>
+		<!--Waves end-->
+
+	</div>
+	<!--Header ends-->
+
+	<!--Content starts-->
+	<div class="content flex">
+		<form th:object="${member}" th:action="@{/registermember}"
+			method="post">
+			<input type="text" placeholder="First Name"
+				onfocus="this.placeholder = ''"
+				onblur="this.placeholder = 'First Name'" th:field="*{fname}" 
+				
+				pattern="^[a-zA-Z\\s]*$"
+oninvalid="this.setCustomValidity('*Please enter valid Name')"
+onchange="try{setCustomValidity('')}catch(e){}"
+oninput="setCustomValidity(' ')"
+				
+				required
+				
+				/> 
+				<input
+				type="text" placeholder="Last Name" onfocus="this.placeholder = ''"
+				onblur="this.placeholder = 'Last Name'" th:field="*{lname}" 
+				
+				pattern="^[a-zA-Z\\s]*$"
+oninvalid="this.setCustomValidity('*Please enter valid Name')"
+onchange="try{setCustomValidity('')}catch(e){}"
+oninput="setCustomValidity(' ')"
+				
+				required/> 
+				
+				
+				<input
+				type="email" placeholder="Email" onfocus="this.placeholder = ''"
+				onblur="this.placeholder = 'Email'" th:field="*{email}" 
+				
+				pattern="^[a-zA-Z0-9.!#$%&+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$"
+onchange="try{setCustomValidity('')}catch(e){}"
+oninput="setCustomValidity(' ')"
+oninvalid="this.setCustomValidity('*Please enter valid Email')"
+				
+				required/> 
+				
+				 
+				 
+				 
+				 
+				 <input type="number" placeholder="Contact"
+				onfocus="this.placeholder = ''"
+				onblur="this.placeholder = 'Contact'" th:field="*{contact}" 
+				min="6000000000" max="9999999999"
+				
+				pattern="[0-9]{10}"
+oninvalid="this.setCustomValidity('*Please enter Mobile Number')"
+onchange="try{setCustomValidity('')}catch(e){}"
+oninput="setCustomValidity(' ')"
+				
+				
+				required
+				
+				/> 
+				
+				
+				
+				<input
+				type="password" placeholder="Password"
+				onfocus="this.placeholder = ''"
+				onblur="this.placeholder = 'Password'" th:field="*{pass}" 
+				
+				
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+				onchange="try{setCustomValidity('')}catch(e){}"
+				oninput="setCustomValidity(' ')"
+				oninvalid="this.setCustomValidity('*Your password must contain at least 1 uppercase, 1 lowercase letter, 1 no. digit and 1 special character.')"
+				
+				
+		
+				required/> 
+				
+				
+				<select
+				class="select" th:field="*{gender}" required>
+				<option value="m">Male</option>
+				<option value="f">Female</option>
+				<option value="o">Other</option>
+			</select> 
+			
+			 <select class="select" th:field="*{role}" required hidden="">
+				<option value="user" selected>Member</option>
+			</select> 
+			
+			
+			
+			<button class="login-btn" type="submit">Register</button>
+		</form>
+		<div class="bottom-container">
+			<p>Registered with us?</p>
+			<a th:href="@{/login}">Login</a>
+		</div>
+	</div>
+	<!--Content ends-->
+</body>
+</html>

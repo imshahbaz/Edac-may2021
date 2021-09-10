@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sports Club</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="img/logo.png" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+                <div class="container px-5">
+                    <a class="navbar-brand" th:href="@{/}"><b>Elite Sports Club</b></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/gallery}">Gallery</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/membership}">Membership</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/tournaments}">Tournaments</a></li>
+                            
+                           
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Facilities</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" th:href="@{/swimming}">Aqua Point</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/badminton}">Badminton</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/bodyzone}">Body Zone</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/cricket}">Cricket</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/music}">Music</a></li>
+                                </ul>
+                            </li>
+                            
+                            
+                             <li class="nav-item"><a class="nav-link" th:href="@{/addAdmin}" sec:authorize="hasAuthority('admin')">Add Admin</a></li>
+                            
+                            
+                            <li class="nav-item"><span class="nav-link" sec:authorize="isAuthenticated()">Welcome! [[${#request.userPrincipal.principal.fname}]]</span></li>
+                            
+                            
+                             <li class="nav-item"><a class="nav-link" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/register}" sec:authorize="!isAuthenticated()">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Header-->
+            <header class="bg-dark py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 align-items-center justify-content-center">
+                        <div class="col-lg-8 col-xl-7 col-xxl-6">
+                            <div class="my-5 text-center text-xl-start">
+                                <h1 class="display-5 fw-bolder text-white mb-2">ABOUT SPORTS CLUB</h1>
+                                <p class="lead fw-normal text-white-50 mb-4">Every dream needs to be driven by passion to make it come true. Sports Club is one such dream, 
+                                    formed by keeping sheer passion for the gentleman’s game-Cricket. 
+                                    Sports Club was conceived by a group of people headed by Chinubhai Chimanbhai;
+                                     the then Mayor and leading businessman from Ahmedabad in 1965.</p>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                                    <!-- <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a> -->
+                                    <a class="btn btn-outline-light btn-lg px-4" th:href="@{/gallery}">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="img/sportsclub.jpeg" alt="..." /></div>
+                    </div>
+                </div>
+            </header>
+            <br>
+            <div>
+            <marquee>
+                <span>
+                   <b> Members are requested to register their email ID with the Club immediately, mentioning name & membership no. to receive communication promptly, if not done so.
+                </b>
+                </span>
+            </marquee>
+        </div>
+            <section class="py-5" style="padding-bottom: -20%;margin-bottom: -10%;">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">Facilities We Provide</h2>
+                                <p class="lead fw-normal text-muted mb-5">Our Sports Club is not just limited to outdoor sports, We provide various facilities also.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="img/lawn.jpg" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Lawn</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Spacious Huge Lawns</h5></a>
+                                    <p class="card-text mb-0">A lush green Lawn with a sitting capacity of 2500 people serves as an open space where one can unwind and get a generous dose of nature or just spend some leisure time with friends and family.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="img/accomodation.png" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Accomodation</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Comfortabel & Hassle free Accomodations</h5></a>
+                                    <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <img class="card-img-top" src="img/library.png" alt="..." />
+                                <div class="card-body p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">library</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Quite & Huge library</h5></a>
+                                    <p class="card-text mb-0">We have a well equipped and well stocked library which is a perennial source of knowledge for the book-worm in you. A place where you can read your choice of books with a pin drop silence and calm environment.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Features section-->
+            <section class="py-5" id="features" style="padding-top: -20%;">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5">
+                        <div class="col-lg-4 mb-0 mt-xxl-5"><h2 class="fw-bolder mb-0 mt-xxl-5" style="padding-top: 45%;font-size: 45px;">A better way to start building your health with these :</h2></div>
+                        <div class="col-lg-8">
+                            <div class="row gx-5 row-cols-2 row-cols-md-6 row-cols-sm-6">
+                               
+                                <style>
+                                  .card1 {
+                                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                                transition: 0.3s;
+                                width: 32%;
+                                border-radius: 5px;
+                                shape-margin: 50px;
+                                margin-bottom: 15px;
+                                padding-top: 10px;
+                                margin-right: 10px;
+                                }
+
+                                .card1:hover{
+                                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+                                }
+
+                                img {
+                                border-radius: 5px 5px 0 0;
+                                }
+
+                                .container1 {
+                                padding: 2px 15px;
+                                }
+                                </style>
+                                <div class="card1">
+                                    <img src="img/card1.jpg" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Cricket</b></h4> 
+                                      <p>We have incorporated a well equipped health club for fitness enthusiasts along with certified trainers who help to maintain a fit and healthy body.</p> 
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="card1">
+                                    <img src="img/card2.jpg" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Badminton</b></h4> 
+                                      <p>The Badminton court at Sports club is not less than a professionally prepared court, it is well equipped and well lit for evening practice sessions too.</p> 
+                                    </div>
+                                  </div>
+                                  <div class="card1">
+                                    <img src="img/card3.jpg" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Body Zone</b></h4> 
+                                      <p>We have incorporated a well equipped health club for fitness enthusiasts along with certified trainers who help to maintain a fit and healthy body.</p> 
+                                    </div>
+                                  </div>
+                                 
+                                  <div class="card1">
+                                    <img src="img/card4.jfif" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Aqua Point</b></h4> 
+                                      <p>Sports Club houses a huge swimming pool where coaching facilities are provided throughout the year.</p> 
+                                    </div>
+                                  </div>
+                                  <div class="card1">
+                                    <img src="img/card5.jpeg" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Football</b></h4> 
+                                      <p>Football is a family of team sports that involve, to varying degrees, kicking a ball to score a goal. </p> 
+                                    </div>
+                                  </div>
+                                  <div class="card1">
+                                    <img src="img/card6.jpg" alt="Avatar" style="width:100%">
+                                    <div class="container1">
+                                      <h4><b>Music</b></h4> 
+                                      <p>Music room in the New Sports complex is a place to enjoy in your own group like a Karaoke Session or listening to music </p> 
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+            <!-- Testimonial section-->
+            <div class="py-5 bg-light">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-10 col-xl-7">
+                            <div class="text-center">
+                                <div class="fs-4 mb-4 fst-italic">"As I sit here now, when I take off my shoe and I look down at my scar, I see beauty in it. I see all the hard work, all the sacrifices. I see the journey that it took to get back to this point of being healthy. And I see beauty in that struggle. That's what makes it beautiful.""</div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="fw-bold">
+                                        Kobe Brynt
+                                        <span class="fw-bold text-primary mx-1">/</span>
+                                       Greatest of all time.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog preview section-->
+
+        <!-- Footer-->
+        <!-- <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2021</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer> -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 footer-column">
+                            <div class="logo-widget footer-widget">
+                                <figure class="logo-box"><a th:href="@{/}"><img src="img/logo1.jpg" alt=""></a></figure>
+                                <div class="text">
+                                    <p> Today, Sports Club is one of the most regal clubs of Ahmedabad and renowned for its state of the art amenities and splendid aura.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-2 footer-column">
+                            <div class="service-widget footer-widget">
+                                <div class="footer-title">Services</div>
+                                <ul class="list">
+                                    <li><a href="#">Grounds</a></li>
+                                    <li><a href="#">Lawns</a></li>
+                                    <li><a href="#">Indoor sport halls</a></li>
+                                    <li><a href="#">Food and beverages</a></li>
+                                    <li><a href="#">Accomodations</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 footer-widget">
+                            <div class="service-widget footer-widget">
+                                <div class="footer-title">Designed By</div>
+                                <ul class="list">
+                                    <li><a href="https://www.linkedin.com/in/imshahbaz21/">Shahbaz Ahmed</a></li>
+                                    <li><a href="https://www.linkedin.com/in/udit-vyas-6a840b1a1/">Udit Vyas</a></li>
+                                    <li><a href="https://www.linkedin.com/in/jayesh-gaikwad-95967819a/">Jayesh Gaikwad</a></li>
+                                    <li><a href="https://www.linkedin.com/in/janhavi-banarse-4ba33a19a
+                                    ">Janvahi Banarse</a></li>
+                                    <li><a href="https://www.linkedin.com/in/devanshu-sulakhe-22b9b6199/
+                                    ">Devanshu Sulakhe</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- main-footer end -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 column">
+                        <div class="copyright"> &copy; 2019 All Right Reserved</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 column">
+                        <ul class="footer-nav">
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        </main>
+    </body>
+</html>
